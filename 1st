@@ -1,0 +1,20 @@
+import requests
+
+# Etherscan API endpoint
+url = 'https://api.etherscan.io/api'
+
+# Ethereum address to check balance of
+address = '0x742d35Cc6634C0532925a3b844Bc454e4438f44e'
+
+# Etherscan API key
+api_key = 'YourApiKeyHere'
+
+# Make GET request to Etherscan API
+params = {'module': 'account', 'action': 'balance', 'address': address, 'tag': 'latest', 'apikey': api_key}
+response = requests.get(url, params=params)
+
+# Get balance from API response
+balance = response.json()['result']
+
+# Print balance
+print(f'Balance of {address}: {balance} wei')
